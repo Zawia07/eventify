@@ -1,0 +1,83 @@
+// lib/menu_page.dart
+import 'package:flutter/material.dart';
+
+class MenuPage extends StatelessWidget {
+  const MenuPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      // 1. Page Menu (centered at the top)
+      appBar: AppBar(
+        title: const Text('Menu'),
+        centerTitle: true, // Centers the title in the AppBar
+        automaticallyImplyLeading: false, // Hides the default back arrow
+      ),
+      body: Stack(
+        // Stack allows us to layer widgets on top of each other
+        children: [
+          // Main content: 2 buttons (View Events, Join by Code)
+          Center(
+            // Centers the Column horizontally and vertically within the remaining space
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center, // Centers widgets within the column vertically
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    // TODO: Implement navigation or action for 'View Events'
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('View Events button pressed!')),
+                    );
+                    print('View Events button pressed!');
+                  },
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: const Size(200, 50), // Makes buttons wider
+                    textStyle: const TextStyle(fontSize: 18),
+                  ),
+                  child: const Text('View Events'),
+                ),
+                const SizedBox(height: 20), // Spacing between buttons
+                ElevatedButton(
+                  onPressed: () {
+                    // TODO: Implement navigation or action for 'Join by Code'
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Join by Code button pressed!')),
+                    );
+                    print('Join by Code button pressed!');
+                  },
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: const Size(200, 50), // Makes buttons wider
+                    textStyle: const TextStyle(fontSize: 18),
+                  ),
+                  child: const Text('Join by Code'),
+                ),
+              ],
+            ),
+          ),
+
+          // Third button: 'Back to Login' (bottom right)
+          Align(
+            alignment: Alignment.bottomRight, // Aligns the child to the bottom right
+            child: Padding(
+              padding: const EdgeInsets.all(20.0), // Adds padding around the button
+              child: ElevatedButton(
+                onPressed: () {
+                  // This pops the current route off the navigation stack,
+                  // returning to the previous route (LoginPage in this case).
+                  Navigator.pop(context);
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.redAccent, // Make it stand out
+                  foregroundColor: Colors.white,
+                  padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 12),
+                  textStyle: const TextStyle(fontSize: 16),
+                ),
+                child: const Text('Back to Login'),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
