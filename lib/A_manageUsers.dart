@@ -161,7 +161,10 @@ class _AdminManageUsersScreenState extends State<AdminManageUsersScreen> {
               child: ElevatedButton(
                 onPressed: () {
                   // Handle back navigation
-                  Navigator.pop(context); // Goes back to the previous screen
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MyApp()),
+                  ); // Goes back to the previous screen
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.black, // Background color
