@@ -29,10 +29,18 @@ class RegistrationScreen extends StatefulWidget {
 }
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
-  final TextEditingController _nameController = TextEditingController(text: 'Jie Ranjan');
-  final TextEditingController _emailController = TextEditingController(text: 'hello@reallygreatsite.com');
-  final TextEditingController _passwordController = TextEditingController(text: '*****');
-  final TextEditingController _dobController = TextEditingController(text: 'Sign up'); // Placeholder text
+  final TextEditingController _nameController = TextEditingController(
+    text: 'Jie Ranjan',
+  );
+  final TextEditingController _emailController = TextEditingController(
+    text: 'hello@reallygreatsite.com',
+  );
+  final TextEditingController _passwordController = TextEditingController(
+    text: '*****',
+  );
+  final TextEditingController _dobController = TextEditingController(
+    text: 'Sign up',
+  ); // Placeholder text
 
   Future<void> _selectDate(BuildContext context) async {
     // This is a placeholder for a real date picker.
@@ -47,7 +55,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     if (picked != null) {
       setState(() {
         // Format the date as needed, e.g., '2023-10-26'
-        _dobController.text = "${picked.year}-${picked.month.toString().padLeft(2, '0')}-${picked.day.toString().padLeft(2, '0')}";
+        _dobController.text =
+            "${picked.year}-${picked.month.toString().padLeft(2, '0')}-${picked.day.toString().padLeft(2, '0')}";
       });
     }
   }
@@ -57,7 +66,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     print('Registration Confirmed!');
     print('Name: ${_nameController.text}');
     print('Email: ${_emailController.text}');
-    print('Password (mock): ${_passwordController.text}'); // In real app, don't log password directly
+    print(
+      'Password (mock): ${_passwordController.text}',
+    ); // In real app, don't log password directly
     print('Date of Birth: ${_dobController.text}');
     // Show a SnackBar or navigate
     ScaffoldMessenger.of(context).showSnackBar(
@@ -76,7 +87,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         borderRadius: BorderRadius.circular(10.0), // Rounded corners
         borderSide: BorderSide.none, // No border line
       ),
-      contentPadding: const EdgeInsets.symmetric(vertical: 14.0, horizontal: 16.0),
+      contentPadding: const EdgeInsets.symmetric(
+        vertical: 14.0,
+        horizontal: 16.0,
+      ),
     );
   }
 
@@ -103,7 +117,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30.0),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch, // Stretch children horizontally
+            crossAxisAlignment:
+                CrossAxisAlignment.stretch, // Stretch children horizontally
             children: <Widget>[
               // Status bar placeholder (optional, but good for visual alignment)
               const SizedBox(height: 50),
@@ -116,7 +131,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 32,
-                    fontWeight: FontWeight.w900, // Very bold to approximate Georgia font
+                    fontWeight: FontWeight
+                        .w900, // Very bold to approximate Georgia font
                     color: Colors.black,
                     // If you have a custom font like Georgia, you would specify it here:
                     // fontFamily: 'Georgia',
@@ -124,7 +140,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 ),
               ),
               const SizedBox(height: 50), // Space after title
-
               // NAME field
               _buildLabel('NAME'),
               const SizedBox(height: 8),
@@ -134,7 +149,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 style: const TextStyle(color: Colors.black),
               ),
               const SizedBox(height: 20), // Space between fields
-
               // EMAIL field
               _buildLabel('EMAIL'),
               const SizedBox(height: 8),
@@ -162,7 +176,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               const SizedBox(height: 8),
               GestureDetector(
                 onTap: () => _selectDate(context),
-                child: AbsorbPointer( // Prevents TextFormField from directly getting focus
+                child: AbsorbPointer(
+                  // Prevents TextFormField from directly getting focus
                   child: TextFormField(
                     controller: _dobController,
                     decoration: _inputDecoration('Sign up'),
@@ -172,7 +187,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 ),
               ),
               const SizedBox(height: 40), // More space before the button
-
               // Confirm Registration Button
               ElevatedButton(
                 onPressed: _confirmRegistration,
@@ -180,17 +194,19 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   backgroundColor: Colors.black, // Black background
                   foregroundColor: Colors.white, // White text
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0), // Rounded corners
+                    borderRadius: BorderRadius.circular(
+                      10.0,
+                    ), // Rounded corners
                   ),
                   padding: const EdgeInsets.symmetric(vertical: 16.0),
-                  minimumSize: const Size(double.infinity, 50), // Full width, fixed height
+                  minimumSize: const Size(
+                    double.infinity,
+                    50,
+                  ), // Full width, fixed height
                 ),
                 child: const Text(
                   'Confirm Registration',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
               ),
               const SizedBox(height: 30), // Space at the bottom
